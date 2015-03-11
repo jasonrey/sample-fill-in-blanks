@@ -1,0 +1,27 @@
+doctype html
+html
+    head
+        title Fill in the Blanks
+        link(rel="stylesheet", href="css/bootstrap.min.css")
+        script(type="text/javascript", src="js/jquery.min.js")
+
+        script(type="text/coffeescript", src="coffee/index.coffee")
+        link(rel="stylesheet/less", type="text/css", href="less/index.less")
+
+        script(type="text/javascript", src="js/less.min.js")
+        script(type="text/javascript", src="js/coffee-script.js")
+    body
+        .container
+            .jumbotron
+                h1.title Fill in the Blanks
+                ol
+                    li Only input[type="text"] data are retrieved
+                    li Multiple inputs are populated by index
+                    li Input can define if the check should be case sensitive
+
+        .container
+            .panel.panel-primary
+                .panel-heading
+                    h2 Mechanics
+                .panel-body.item
+                    div.question Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam nec sapien scelerisque, mollis justo at, cursus ante.
