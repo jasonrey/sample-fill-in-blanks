@@ -18,30 +18,107 @@ html
                     li Only input[type="text"] data are retrieved
                     li Multiple inputs are populated by index
                     li Input can define if the check should be case sensitive
+                    li Single field can have multiple answers
 
         .container
             .panel.panel-primary
                 .panel-heading
                     h2 Mechanics (single)
-                .panel-body.item(data-id="1")
+                .panel-body.item(data-type="fill", data-id="1")
                     .question.form-inline
-                        = "Lorem ipsum dolor sit amet, "
-                        input.form-control.input(type="text")
-                        = " adipiscing elit. Nam nec sapien scelerisque, mollis justo at, cursus ante."
+                        = "Lorem ipsum dolor sit amet, {input} adipiscing elit. Nam nec sapien scelerisque, mollis justo at, cursus ante."
                     .actions
                         button.btn.btn-default.check Check Answer
 
             .panel.panel-primary
                 .panel-heading
                     h2 Mechanics (multiple)
-                .panel-body.item(data-id="2")
+                .panel-body.item(data-type="fill", data-id="2")
                     .question.form-inline
-                        = "Lorem ipsum dolor sit "
-                        input.form-control.input(type="text")
-                        = ", consectetur adipiscing elit. "
-                        input.form-control.input(type="text")
-                        = " Nam nec sapien scelerisque, "
-                        input.form-control.input(type="text")
-                        = " justo at, cursus ante."
+                        = "Lorem ipsum dolor sit {input}, consectetur adipiscing elit. {input} nec sapien scelerisque, {input} justo at, cursus ante."
                     .actions
                         button.btn.btn-default.check Check Answer
+
+            .panel.panel-default
+                .panel-heading
+                    h2 HTML Block
+                .panel-body
+                    pre
+                        = "<div "
+                        strong= "data-type=\"fill\""
+                        = " "
+                        strong= "data-id=\"<?php echo $id; ?>\""
+                        = ">"
+                        br
+                        = "    <div "
+                        strong= "class=\"question\""
+                        = ">"
+                        br
+                        strong= "        <?php echo $question; ?>"
+                        br
+                        = "    </div>"
+                        br
+                        = "    <button "
+                        strong= "class=\"check\""
+                        = ">Check</button>"
+                        br
+                        = "</div>"
+
+            .panel.panel-default
+                .panel-heading
+                    h2 Question Input
+                .panel-body
+                    pre
+                        = "Lorem ipsum dolor sit amet, "
+                        strong= "{input}"
+                        = " adipiscing elit. Nam nec sapien scelerisque, mollis justo at, cursus ante."
+
+            .panel.panel-default
+                .panel-heading
+                    h2 Answers Database
+                .panel-body
+                    table.table.table-striped.table-condensed
+                        thead
+                            tr
+                                th id
+                                th questionid
+                                th answerindex
+                                th value
+                        tbody
+                            tr
+                                td 1
+                                td 1
+                                td 0
+                                td apple
+                            tr
+                                td 2
+                                td 1
+                                td 0
+                                td boy
+                            tr
+                                td 3
+                                td 2
+                                td 0
+                                td apple
+                            tr
+                                td 4
+                                td 2
+                                td 1
+                                td boy
+                            tr
+                                td 5
+                                td 2
+                                td 2
+                                td cat
+                            tr
+                                td 6
+                                td 2
+                                td 2
+                                td dog
+
+            .panel.panel-warning
+                .panel-heading
+                    h2 Pending
+                .panel-body
+                    ol
+                        li To show the correct answer if wrong
