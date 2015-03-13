@@ -23,5 +23,12 @@ html
             .panel.panel-primary
                 .panel-heading
                     h2 Mechanics
-                .panel-body.item
-                    div.question Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam nec sapien scelerisque, mollis justo at, cursus ante.
+                .panel-body.item(data-id="1")
+                    .question.form-inline
+                        | Lorem ipsum dolor sit amet,
+                        = " "
+                        input.form-control.input(type="text")
+                        = " "
+                        | adipiscing elit. Nam nec sapien scelerisque, mollis justo at, cursus ante.
+                    .actions
+                        button.btn.btn-default.check Check Answer
