@@ -3,11 +3,10 @@ $ ->
     # Standardise answer to be always array regardless of the number of answers
     master =
         "1": ["apple"]
+        "2": ["apple", "boy", "cat"]
 
     verifyAnswer = (data) ->
         answers = master[data.id]
-
-        console.log master, answers, data
 
         return false if answers.length isnt data.answers.length
 

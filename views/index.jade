@@ -22,13 +22,26 @@ html
         .container
             .panel.panel-primary
                 .panel-heading
-                    h2 Mechanics
+                    h2 Mechanics (single)
                 .panel-body.item(data-id="1")
                     .question.form-inline
-                        | Lorem ipsum dolor sit amet,
-                        = " "
+                        = "Lorem ipsum dolor sit amet, "
                         input.form-control.input(type="text")
-                        = " "
-                        | adipiscing elit. Nam nec sapien scelerisque, mollis justo at, cursus ante.
+                        = " adipiscing elit. Nam nec sapien scelerisque, mollis justo at, cursus ante."
+                    .actions
+                        button.btn.btn-default.check Check Answer
+
+            .panel.panel-primary
+                .panel-heading
+                    h2 Mechanics (multiple)
+                .panel-body.item(data-id="2")
+                    .question.form-inline
+                        = "Lorem ipsum dolor sit "
+                        input.form-control.input(type="text")
+                        = ", consectetur adipiscing elit. "
+                        input.form-control.input(type="text")
+                        = " Nam nec sapien scelerisque, "
+                        input.form-control.input(type="text")
+                        = " justo at, cursus ante."
                     .actions
                         button.btn.btn-default.check Check Answer
