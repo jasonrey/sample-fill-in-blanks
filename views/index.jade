@@ -5,6 +5,9 @@ html
         link(rel="stylesheet", href="css/bootstrap.min.css")
         script(type="text/javascript", src="js/jquery.min.js")
 
+        link(rel="stylesheet", href="css/feedback.css")
+        script(type="text/javascript", src="js/feedback.js")
+
         script(type="text/coffeescript", src="coffee/index.coffee")
         link(rel="stylesheet/less", type="text/css", href="less/index.less")
 
@@ -118,7 +121,5 @@ html
 
             .panel.panel-warning
                 .panel-heading
-                    h2 Pending
-                .panel-body
-                    ol
-                        li To show the correct answer if wrong
+                    h2 To Do
+                .panel-body#feedback(data-identifier="fill-in-blanks")
