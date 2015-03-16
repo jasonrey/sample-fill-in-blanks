@@ -154,7 +154,7 @@ task "copyExternalLibraries",
     ->
         invoke "prepareFolders"
 
-        unless fs.existsSync "#{pwd}/external_components"
+        if fs.existsSync "#{pwd}/external_components"
             for folder in fs.readdirSync "#{pwd}/external_components"
                 for type in fs.readdirSync "#{pwd}/external_components/#{folder}"
                     fs.mkdirSync "#{pwd}/public/#{type}" unless fs.existsSync "#{pwd}/public/#{type}"
