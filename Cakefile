@@ -41,6 +41,7 @@ task "phpbuild",
         invoke "compilejs"
         invoke "compilecss"
         invoke "compileHTML"
+        invoke "copyExternalLibraries"
         invoke "copyAPI"
 
 task "phpbeautybuild",
@@ -51,6 +52,7 @@ task "phpbeautybuild",
         invoke "compilebeautyjs"
         invoke "compilebeautycss"
         invoke "compileHTML"
+        invoke "copyExternalLibraries"
         invoke "copyAPI"
 
 task "prepareFolders",
@@ -146,3 +148,17 @@ task "copyAPI",
     ->
         invoke "prepareFolders"
         exec "cp #{pwd}/assets/api/* #{pwd}/public/api/"
+
+task "copyExternalLibraries",
+    "Copies external libraries to assets and public folder."
+    ->
+        invoke "prepareFolders"
+
+        unless fs.existsSync "#{pwd}/external_components"
+            for folder in fs.readdirSync "#{pwd}/external_components"
+                for type in fs.readdirSync "#{pwd}/external_components/#{folder}"
+                    fs.mkdirSync "#{pwd}/public/#{type}" unless fs.existsSync "#{pwd}/public/#{type}"
+                    fs.mkdirSync "#{pwd}/assets/#{type}" unless fs.existsSync "#{pwd}/assets/#{type}"
+
+                    exec "cp #{pwd}/external_components/#{folder}/#{type}/* #{pwd}/public/#{type}/"
+                    exec "cp #{pwd}/external_components/#{folder}/#{type}/* #{pwd}/assets/#{type}/"
