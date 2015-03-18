@@ -12,17 +12,14 @@ $ ->
         # Mocking AJAX and PHP
         answers = master[data.id]
 
-        response =
-            state: true
+        response = state: true
 
         response.state = false if answers.length isnt data.answers.length
 
         response.result = []
 
         for answer, i in answers
-            r = {}
-
-            r.state = true
+            r = state: true
 
             if $.isArray answer
                 r.state = false if data.answers[i] not in answer
@@ -39,45 +36,43 @@ $ ->
 
         return dfd
 
-    items = $ ".item[data-type=fill]"
+    items = $ "[data-type='fill']"
 
-    $.each items, (i, item) ->
+    return if items.length is 0
+
+    for item in items
         item = $ item
+
         question = item.find ".question"
 
-        question.html question.html().replace /\{input\}/g, '<input type="text" class="form-control input" />'
+        question.html question.html().replace /\{input\}/g, '<input type="text" class="form-control" />'
+        item.on "click", ".check", (event) ->
+            button = $ @
+            block = $ event.delegateTarget
+            id = block.data "id"
 
-    items.on "click", ".check", (event) ->
-        button = $ @
-        block = $ event.delegateTarget
-        block.trigger "check"
+            inputs = block.find "input"
+            inputs.removeClass "correct wrong"
 
-    items.on "check", (event) ->
-        block = $ @
-        id = block.data "id"
+            inputs.prop "disabled", true
 
-        inputs = block.find ".input"
-        inputs.removeClass "correct wrong"
+            answers = ($(input).val() for input in inputs)
 
-        inputs.prop "disabled", true
+            checkAnswer(
+                id: id
+                answers: answers
+            ).done (response) ->
+                # (bool) response.state True if overall correct
+                # (array) response.result
+                # response.result = [{
+                #   state: (bool) individual state
+                #   answer: (optional, string/array) answers
+                # }]
 
-        answers = ($(input).val() for input in inputs)
+                if response.state is true
+                    inputs.addClass "correct"
+                else
+                    for r, i in response.result
+                        input = $ inputs[i]
 
-        checkAnswer(
-            id: id
-            answers: answers
-        ).done (response) ->
-            # (bool) response.state True if overall correct
-            # (array) response.result
-            # response.result = [{
-            #   state: (bool) individual state
-            #   answer: (optional, string/array) answers
-            # }]
-
-            if response.state is true
-                inputs.addClass "correct"
-            else
-                for r, i in response.result
-                    input = $ inputs[i]
-
-                    input.addClass if r.state then "correct" else "wrong"
+                        input.addClass if r.state then "correct" else "wrong"
