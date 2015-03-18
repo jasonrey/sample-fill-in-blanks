@@ -30,16 +30,16 @@ task "production",
     ->
         invoke "copyLibraries"
         invoke "copyImages"
-        invoke "compilejs"
-        invoke "compilecss"
+        invoke "compileJS"
+        invoke "compileCSS"
 
 task "phpbuild",
     "PHP build.",
     ->
         invoke "copyLibraries"
         invoke "copyImages"
-        invoke "compilejs"
-        invoke "compilecss"
+        invoke "compileJS"
+        invoke "compileCSS"
         invoke "compileHTML"
         invoke "copyExternalLibraries"
         invoke "copyAPI"
@@ -49,8 +49,8 @@ task "phpbeautybuild",
     ->
         invoke "copyLibraries"
         invoke "copyImages"
-        invoke "compilebeautyjs"
-        invoke "compilebeautycss"
+        invoke "compileBeautyJS"
+        invoke "compileBeautyCSS"
         invoke "compileHTML"
         invoke "copyExternalLibraries"
         invoke "copyAPI"
@@ -85,7 +85,7 @@ task "copyImages",
         invoke "prepareFolders"
         exec "cp #{pwd}/assets/images/* #{pwd}/public/images/"
 
-task "compilejs",
+task "compileJS",
     "Compiles coffeescript to javascript.",
     ->
         invoke "prepareFolders"
@@ -96,7 +96,7 @@ task "compilejs",
             for file in fs.readdirSync "#{pwd}/assets/js"
                 exec "uglifyjs --unsafe --output #{pwd}/public/js/#{file} #{pwd}/assets/js/#{file}"
 
-task "compilebeautyjs",
+task "compileBeautyJS",
     "Compiles coffeescript to javascript.",
     ->
         invoke "prepareFolders"
@@ -105,7 +105,7 @@ task "compilebeautyjs",
 
         exec "coffee --compile --bare --output #{pwd}/public/js #{pwd}/assets/coffee"
 
-task "compilecss",
+task "compileCSS",
     "Compiles less to css.",
     ->
         invoke "prepareFolders"
@@ -113,7 +113,7 @@ task "compilecss",
             filename = file.slice 0, -5
             exec "lessc -x #{pwd}/assets/less/#{file} > #{pwd}/public/css/#{filename}.css"
 
-task "compilebeautycss",
+task "compileBeautyCSS",
     "Compiles less to css beautifully.",
     ->
         invoke "prepareFolders"
