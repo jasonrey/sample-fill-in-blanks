@@ -147,7 +147,7 @@ task "copyAPI",
     "Copies additional API files.",
     ->
         invoke "prepareFolders"
-        exec "cp #{pwd}/assets/api/* #{pwd}/public/api/"
+        exec "cp #{pwd}/assets/api/* #{pwd}/public/api/" if fs.existsSync "#{pwd}/assets/api"
 
 task "copyExternalLibraries",
     "Copies external libraries to assets and public folder."
