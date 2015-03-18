@@ -33,7 +33,7 @@ task "production",
         invoke "compileJS"
         invoke "compileCSS"
 
-task "phpbuild",
+task "phpBuild",
     "PHP build.",
     ->
         invoke "copyLibraries"
@@ -44,7 +44,7 @@ task "phpbuild",
         invoke "copyExternalLibraries"
         invoke "copyAPI"
 
-task "phpbeautybuild",
+task "phpBeautyBuild",
     "PHP build beautifully.",
     ->
         invoke "copyLibraries"
