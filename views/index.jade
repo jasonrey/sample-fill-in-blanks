@@ -48,22 +48,22 @@ html
                 .panel-body
                     pre
                         = "<div "
-                        strong= "data-type=\"fill\""
+                        strong= 'data-type="fill"'
                         = " "
-                        strong= "data-id=\"<?php echo $id; ?>\""
+                        strong= 'data-id="(id)"'
                         = ">"
                         br
                         = "    <div "
-                        strong= "class=\"question\""
+                        strong= 'class="question"'
                         = ">"
                         br
-                        strong= "        <?php echo $question; ?>"
+                        strong= "        (question)"
                         br
                         = "    </div>"
                         br
-                        = "    <button "
-                        strong= "class=\"check\""
-                        = ">Check Answer</button>"
+                        = "    <button|a "
+                        strong= 'class="check"'
+                        = ">Check Answer</button|a>"
                         br
                         = "</div>"
 
@@ -84,7 +84,7 @@ html
                     pre= '<input type="text" class="wrong" />'
 
                     h3 Check Answer .check
-                    pre= '<button class="check">Check Answer</button>'
+                    pre= '<button|a class="check">Check Answer</button|a>'
 
 
             .panel.panel-default
