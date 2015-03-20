@@ -57,7 +57,8 @@ html
                         strong= 'class="question"'
                         = ">"
                         br
-                        strong= "        (question)"
+                        = "        "
+                        strong= "(question)"
                         br
                         = "    </div>"
                         br
@@ -69,21 +70,51 @@ html
 
             .panel.panel-default
                 .panel-heading
+                    h2 Transformed Question Block Sample
+                .panel-body
+                    h3 Before
+                    pre
+                        = '<div class="question">'
+                        br
+                        = '    Lorem ipsum {input} sit amet.'
+                        br
+                        = '</div>'
+
+                    h3 After
+                    pre
+                        = '<div class="question">'
+                        br
+                        = '    Lorem ipsum <input type="text" /> sit amet.'
+                        br
+                        = '</div>'
+
+            .panel.panel-default
+                .panel-heading
                     h2 CSS Classes
                 .panel-body
-                    h3 Question Block .question
+                    h3
+                        = "Question Block "
+                        code= ".question"
                     pre= '<div class="question"></div>'
 
-                    h3 Input .question input
+                    h3
+                        = "Input "
+                        code= ".question input"
                     pre= '<input type="text" />'
 
-                    h3 Input - Correct .question input.correct
+                    h3
+                        = "Input - Correct "
+                        code= ".question input.correct"
                     pre= '<input type="text" class="correct" />'
 
-                    h3 Input - Wrong .question input.wrong
+                    h3
+                        = "Input - Wrong "
+                        code= ".question input.wrong"
                     pre= '<input type="text" class="wrong" />'
 
-                    h3 Check Answer .check
+                    h3
+                        = "Check Answer "
+                        code= ".check"
                     pre= '<button|a class="check">Check Answer</button|a>'
 
 
